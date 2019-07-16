@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="parent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1280.0" styleClass="parent" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.main.UIController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="769.0" prefWidth="300.0" styleClass="sidebar">
+            <children>
+                <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Admin Panel" textFill="WHITE">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="Product Sans Bold" size="20.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="SEARCH" size="1.3em" />
+                        <TextField promptText="Search" style="-fx-background-color: transparent; -fx-text-fill: #fff;" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Calibri Light" size="14.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox fx:id="dashboard" alignment="CENTER_LEFT" layoutX="10.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleDash" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="DASHBOARD" size="1.3em" />
+                        <Label text="Dashboard" textFill="#7c8184">
+                            <font>
+                                <Font name="Calibri Light" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox fx:id="criminals" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleCriminal" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="BAN" size="1.3em" />
+                        <Label text="Criminals" textFill="#7c8184">
+                            <font>
+                                <Font name="Product Sans" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox fx:id="prisonerhandle" alignment="CENTER_LEFT" layoutX="10.0" layoutY="132.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleprisoner" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="USERS" size="1.3em" />
+                        <Label text="Cases" textFill="#7c8184">
+                            <font>
+                                <Font name="Product Sans" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox fx:id="suspects" alignment="CENTER_LEFT" layoutX="10.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleSuspect" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="SEARCH" size="1.3em" />
+                        <Label text="Suspects" textFill="#7c8184">
+                            <font>
+                                <Font name="Calibri Light" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <HBox fx:id="victims" alignment="CENTER_LEFT" layoutX="10.0" layoutY="252.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleVictim" prefHeight="40.0" prefWidth="300.0" styleClass="btns">
+                    <children>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="USER" size="1.3em" />
+                        <Label text="Victims" textFill="#7c8184">
+                            <font>
+                                <Font name="Product Sans" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </HBox>
+                <VBox prefHeight="200.0" prefWidth="100.0" styleClass="box" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="TEAM INVOLVED" textFill="#7c8184">
+                            <font>
+                                <Font name="Arial Special G1" size="14.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/avatar-01.jpg" />
+                                    </image>
+                                </ImageView>
+                                <VBox>
+                                    <children>
+                                        <Label text="Rohan" textFill="#7c8184">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" text="Developer" textFill="#7c8184">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="47.0">
+                            <children>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/avatar-02.jpg" />
+                                    </image>
+                                </ImageView>
+                                <VBox>
+                                    <children>
+                                        <Label text="Puru" textFill="#7c8184">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" text="Graphic Designer" textFill="#7c8184">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="47.0">
+                            <children>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/avatar-03.jpg" />
+                                    </image>
+                                </ImageView>
+                                <VBox>
+                                    <children>
+                                        <Label text="Avinash" textFill="#7c8184">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" text="Database Administrator" textFill="#7c8184">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="84.0">
+                            <children>
+                                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/avatar-04.jpg" />
+                                    </image>
+                                </ImageView>
+                                <VBox>
+                                    <children>
+                                        <Label text="Yash" textFill="#7c8184">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" text="UI / UX Designer" textFill="#7c8184">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+                <JFXButton fx:id="btn" buttonType="RAISED" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="200.0" ripplerFill="WHITE" style="-fx-background-color: #00A2D3; -fx-background-radius: 0px;" text="Add Teammate" textFill="WHITE">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="Calibri Light" size="14.0" />
+                    </font>
+                    <graphic>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#fff" iconName="PLUS_CIRCLE" size="1.5em" />
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+            </children>
+        </VBox>
+        <VBox fx:id="vbox" layoutX="300.0" prefHeight="600.0" prefWidth="724.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="979.0" style="-fx-background-color: #fff;">
+                    <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" color="#e8e4e4" height="10.0" radius="4.5" width="10.0" />
+                    </effect>
+                    <children>
+                        <Label layoutX="14.0" layoutY="24.0" text="Dashboard" textFill="#7c8184">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7c8184" iconName="BELL" layoutX="870.0" layoutY="46.0" size="1.5em" />
+                        <FontAwesomeIcon glyphStyle="-fx-fill:#7c8184" iconName="GEAR" layoutX="913.0" layoutY="46.0" size="1.5em" />
+                        <Label alignment="CENTER" layoutX="881.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" styleClass="round-lbl" text="2" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            <BarChart fx:id="bar" prefHeight="416.0" prefWidth="980.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+                <HBox fx:id="hbox" alignment="CENTER" prefHeight="359.0" prefWidth="980.0">
+                    <children>
+                        <VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="200.0" styleClass="card-01" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #72D3FE;" text="Total Cases" textAlignment="CENTER">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="160.0" style="-fx-border-color: #72D3FE;" styleClass="round-box">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <ProgressIndicator fx:id="total_cases" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="total_label" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #72D3FE;" text="56%">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="200.0" styleClass="card-02" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #FFC66C;" text="Completed Cases">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="160.0" style="-fx-border-color: #72D3FE;" styleClass="round-box">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <ProgressIndicator fx:id="com_cases" prefHeight="100.0" prefWidth="100.0" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="com_label" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #FFC66C;" text="88%">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="200.0" styleClass="card-03" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #45B7AF;" text="Running Cases">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="160.0" style="-fx-border-color: #72D3FE;" styleClass="round-box">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                        <ProgressIndicator fx:id="run_cases" prefHeight="100.0" prefWidth="100.0" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="run_label" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="250.0" style="-fx-background-color: #45B7AF;" text="47%">
+                                    <font>
+                                        <Font name="Ebrima Bold" size="15.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+                </HBox>
+            </children>
+        </VBox>
+      <AnchorPane fx:id="prisoneranch" layoutX="300.0" prefHeight="769.0" prefWidth="981.0" style="-fx-background-color: #333645;" visible="false">
+         <children>
+            <Pane prefHeight="75.0" prefWidth="979.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="21.0" layoutY="27.0" text="Cases" textFill="#7c8184">
+                     <font>
+                        <Font name="Product Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTabPane layoutX="23.0" layoutY="83.0" prefHeight="647.0" prefWidth="873.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <tabs>
+                  <Tab closable="false" onSelectionChanged="#case_database" text="Overview">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="721.0">
+                           <children>
+                              <TableView fx:id="case_table" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="14.0" layoutY="12.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="caseid" editable="false" prefWidth="90.0" text="Case ID" />
+                                    <TableColumn fx:id="col_area" editable="false" prefWidth="120.0" text="Area" />
+                                    <TableColumn fx:id="desc" editable="false" prefWidth="150.0" text="Description" />
+                                    <TableColumn fx:id="act" editable="false" prefWidth="120.0" text="Act" />
+                                    <TableColumn fx:id="victim" editable="false" prefWidth="120.0" text="Victim" />
+                                    <TableColumn fx:id="suspect" editable="false" prefWidth="120.0" text="Suspects" />
+                                    <TableColumn fx:id="date" editable="false" prefWidth="100.0" text="Date" />
+                                    <TableColumn fx:id="status" editable="false" prefWidth="100.0" text="Status" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Insert">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="ctext_id" focusColor="#8f92ad" labelFloat="true" layoutX="49.0" layoutY="68.0" promptText="Case ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="ctext_area" focusColor="#8f92ad" labelFloat="true" layoutX="49.0" layoutY="134.0" promptText="Area" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="ctext_act" focusColor="#8f92ad" labelFloat="true" layoutX="47.0" layoutY="312.0" promptText="Act" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="ctext_victim" focusColor="#8f92ad" labelFloat="true" layoutX="48.0" layoutY="362.0" promptText="Victim" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="ctext_suspect" focusColor="#8f92ad" labelFloat="true" layoutX="392.0" layoutY="84.0" promptText="Suspect" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="ctext_status" labelFloat="true" layoutX="392.0" layoutY="224.0" prefHeight="27.0" prefWidth="160.0" promptText="Select Status" />
+                              <JFXButton fx:id="case_submit" alignment="CENTER" buttonType="RAISED" layoutX="143.0" layoutY="427.0" onMouseClicked="#insert_case" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Submit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="case_reset" alignment="CENTER" buttonType="RAISED" layoutX="392.0" layoutY="427.0" onAction="#case_reset" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Reset" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXTextArea fx:id="ctext_desc" focusColor="#8f92ad" labelFloat="true" layoutX="48.0" layoutY="209.0" prefHeight="87.0" prefWidth="277.0" promptText="Description" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextArea>
+                              <JFXDatePicker fx:id="ctext_date" defaultColor="#ffe39f" layoutX="386.0" layoutY="151.0" promptText="Date" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Search">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="82.0" layoutY="39.0" prefHeight="17.0" prefWidth="82.0" text="Search By" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="cstext_id" focusColor="#8f92ad" labelFloat="true" layoutX="353.0" layoutY="92.0" promptText="Case_ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="cstext_area" focusColor="#8f92ad" labelFloat="true" layoutX="574.0" layoutY="92.0" promptText="Area" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="case_search" buttonType="RAISED" layoutX="383.0" layoutY="176.0" onMouseClicked="#search_case" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c;" text="Search" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXDatePicker fx:id="cstext_date" defaultColor="#ffe39f" layoutX="83.0" layoutY="110.0" />
+                              <TableView fx:id="case_table1" cache="true" cacheHint="SCALE_AND_ROTATE" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="230.0">
+                                 <columns>
+                                    <TableColumn fx:id="caseid1" editable="false" prefWidth="90.0" text="Case ID" />
+                                    <TableColumn fx:id="col_area1" editable="false" prefWidth="120.0" text="Area" />
+                                    <TableColumn fx:id="desc1" editable="false" prefWidth="150.0" text="Description" />
+                                    <TableColumn fx:id="act1" editable="false" prefWidth="120.0" text="Act" />
+                                    <TableColumn fx:id="victim1" editable="false" prefWidth="120.0" text="Victim" />
+                                    <TableColumn fx:id="suspect1" editable="false" prefWidth="120.0" text="Suspects" />
+                                    <TableColumn fx:id="date1" editable="false" prefWidth="100.0" text="Date" />
+                                    <TableColumn fx:id="status1" editable="false" prefWidth="100.0" text="Status" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Update">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="criminalanch" layoutX="300.0" prefHeight="769.0" prefWidth="980.0" style="-fx-background-color: #333645;" visible="false">
+         <children>
+            <Pane prefHeight="75.0" prefWidth="982.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="694.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="21.0" layoutY="27.0" text="Criminals" textFill="#7c8184">
+                     <font>
+                        <Font name="Product Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTabPane layoutX="1.0" layoutY="75.0" prefHeight="524.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <tabs>
+                  <Tab fx:id="criminal_over" closable="false" onSelectionChanged="#criminal_database" text="Overview">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="721.0">
+                           <children>
+                              <TableView fx:id="criminal_table" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="14.0" layoutY="12.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+                                <columns>
+                                  <TableColumn fx:id="col_cid" editable="false" prefWidth="100.0" text="Criminal ID" />
+                                  <TableColumn fx:id="col_fname" editable="false" prefWidth="100.0" text="First Name" />
+                                    <TableColumn fx:id="col_lname" editable="false" prefWidth="100.0" text="Last Name" />
+                                    <TableColumn fx:id="col_gen" editable="false" prefWidth="100.0" text="Gender" />
+                                    <TableColumn fx:id="col_age" editable="false" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="col_mob" editable="false" prefWidth="100.0" text="Mobile No." />
+                                    <TableColumn fx:id="col_caseid" editable="false" prefWidth="100.0" text="Case ID" />
+                                    <TableColumn fx:id="col_status" editable="false" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="col_release" editable="false" prefWidth="124.40283203125" text="Release Date" />
+                                </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="Insert">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="crtext_id" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="70.0" promptText="Criminal ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="140.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_lname" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="210.0" promptText="Last Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_gen" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="280.0" promptText="Gender" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_age" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="350.0" promptText="Age" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_mobile" focusColor="#8f92ad" labelFloat="true" layoutX="400.0" layoutY="70.0" promptText="Mobile No." style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crtext_caseid" focusColor="#8f92ad" labelFloat="true" layoutX="400.0" layoutY="140.0" promptText="Case ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXComboBox fx:id="crtext_status" focusColor="WHITE" labelFloat="true" layoutX="400.0" layoutY="210.0" prefHeight="27.0" prefWidth="160.0" promptText="Select Status" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f" />
+                              <JFXButton fx:id="criminal_submit" alignment="CENTER" buttonType="RAISED" layoutX="143.0" layoutY="427.0" onMouseClicked="#insert_criminal" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Submit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="criminal_reset" alignment="CENTER" buttonType="RAISED" layoutX="392.0" layoutY="427.0" onAction="#criminal_reset" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Reset" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXDatePicker fx:id="crtext_date" defaultColor="#ffe39f" layoutX="400.0" layoutY="280.0" style="-fx-text-inner-color: #ffe39f#ffe39f;" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="Search">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="80.0" layoutY="40.0" prefHeight="17.0" prefWidth="82.0" text="Search By" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="crstext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="350.0" layoutY="110.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="crstext_caseid" focusColor="#8f92ad" labelFloat="true" layoutX="620.0" layoutY="110.0" promptText="Case ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="criminal_search" buttonType="RAISED" layoutX="408.0" layoutY="180.0" onMouseClicked="#search_criminal" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c;" text="Search" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <TableView fx:id="criminal_table1" cache="true" cacheHint="SCALE_AND_ROTATE" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="230.0">
+                                 <columns>
+                                    <TableColumn fx:id="col_cid1" editable="false" prefWidth="100.0" text="Criminal ID" />
+                                    <TableColumn fx:id="col_fname1" editable="false" prefWidth="100.0" text="First Name" />
+                                    <TableColumn fx:id="col_lname1" editable="false" prefWidth="100.0" text="Last Name" />
+                                    <TableColumn fx:id="col_gen1" editable="false" prefWidth="100.0" text="Gender" />
+                                    <TableColumn fx:id="col_age1" editable="false" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="col_mob1" editable="false" prefWidth="100.0" text="Mobile No." />
+                                    <TableColumn fx:id="col_caseid1" editable="false" prefWidth="100.0" text="Case ID" />
+                                    <TableColumn fx:id="col_status1" editable="false" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="col_release1" editable="false" prefWidth="120.0" text="Release Date" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                              <JFXTextField fx:id="crstext_id" focusColor="#8f92ad" labelFloat="true" layoutX="80.0" layoutY="110.0" promptText="Criminal ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="Update">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="suspectanch" layoutX="300.0" prefHeight="767.0" prefWidth="979.0" style="-fx-background-color: #333645;" visible="false">
+         <children>
+            <Pane prefHeight="75.0" prefWidth="979.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Label layoutX="21.0" layoutY="27.0" text="Suspects" textFill="#7c8184">
+                     <font>
+                        <Font name="Product Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTabPane layoutX="118.0" layoutY="181.0" prefHeight="524.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <tabs>
+                  <Tab fx:id="suspect_over" closable="false" onSelectionChanged="#suspect_database" text="Overview">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="721.0">
+                           <children>
+                              <TableView fx:id="suspect_table" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="14.0" layoutY="12.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <columns>
+                                    <TableColumn fx:id="sid" editable="false" prefWidth="120.0" text="Suspect ID" />
+                                    <TableColumn fx:id="fname" editable="false" prefWidth="120.0" text="First Name" />
+                                    <TableColumn fx:id="lname" editable="false" prefWidth="120.0" text="Last Name" />
+                                    <TableColumn fx:id="gen" editable="false" prefWidth="120.0" text="Gender" />
+                                    <TableColumn fx:id="age" editable="false" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="mobile" editable="false" prefWidth="120.0" text="Mobile No." />
+                                    <TableColumn fx:id="case_id" editable="false" prefWidth="120.0" text="Case ID" />
+                                    <TableColumn fx:id="crime_id" editable="false" prefWidth="120.0" text="Crime ID" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Insert">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="stext_id" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="70.0" promptText="Suspect ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="140.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_lname" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="210.0" promptText="Last Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_gen" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="280.0" promptText="Gender" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_age" focusColor="#8f92ad" labelFloat="true" layoutX="50.0" layoutY="350.0" promptText="Age" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_mobile" focusColor="#8f92ad" labelFloat="true" layoutX="400.0" layoutY="140.0" promptText="Mobile No." style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_caseid" focusColor="#8f92ad" labelFloat="true" layoutX="400.0" layoutY="210.0" promptText="Case ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="stext_crimeid" focusColor="#8f92ad" labelFloat="true" layoutX="400.0" layoutY="280.0" promptText="Crime ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="suspect_submit" alignment="CENTER" buttonType="RAISED" layoutX="150.0" layoutY="430.0" onMouseClicked="#insert_suspect" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Submit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="suspect_reset" alignment="CENTER" buttonType="RAISED" layoutX="400.0" layoutY="430.0" onAction="#suspect_reset" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Reset" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Search">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-text-inner-color: #ffe39f#ffe39f;">
+                           <children>
+                              <Label layoutX="80.0" layoutY="40.0" prefHeight="17.0" prefWidth="82.0" text="Search By" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="sstext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="134.0" layoutY="110.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="sstext_lname" focusColor="#8f92ad" labelFloat="true" layoutX="490.0" layoutY="110.0" promptText="Last Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="suspect_search" buttonType="RAISED" layoutX="369.0" layoutY="176.0" onMouseClicked="#search_suspect" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c;" text="Search" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <TableView fx:id="suspect_table1" cache="true" cacheHint="SCALE_AND_ROTATE" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="230.0">
+                                 <columns>
+                                    <TableColumn fx:id="sid1" editable="false" prefWidth="100.0" text="Suspect ID" />
+                                    <TableColumn fx:id="fname1" editable="false" prefWidth="120.0" text="First Name" />
+                                    <TableColumn fx:id="lname1" editable="false" prefWidth="120.0" text="Last Name" />
+                                    <TableColumn fx:id="gen1" editable="false" prefWidth="120.0" text="Gender" />
+                                    <TableColumn fx:id="age1" editable="false" prefWidth="75.0" text="Age" />
+                                    <TableColumn fx:id="mobile1" editable="false" prefWidth="120.0" text="Mobile No." />
+                                    <TableColumn fx:id="case_id1" editable="false" prefWidth="120.0" text="Case ID" />
+                                    <TableColumn fx:id="crime_id1" editable="false" prefWidth="100.0" text="Crime ID" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="victimanch" layoutX="300.0" prefHeight="600.0" prefWidth="724.0" style="-fx-background-color: #333645;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="75.0" prefWidth="981.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="690.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="21.0" layoutY="27.0" text="Victims" textFill="#7c8184">
+                     <font>
+                        <Font name="Product Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXTabPane layoutX="-4.0" layoutY="75.0" prefHeight="693.0" prefWidth="985.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <tabs>
+                  <Tab fx:id="victim_over" closable="false" onSelectionChanged="#victim_database" text="Overview">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="488.0" prefWidth="721.0">
+                           <children>
+                              <TableView fx:id="victim_table" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="14.0" layoutY="12.0" prefHeight="630.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+                                 <columns>
+                                    <TableColumn fx:id="victim_id" editable="false" prefWidth="119.60232543945312" text="Victim ID" />
+                                    <TableColumn fx:id="v_fname" editable="false" prefWidth="120.0" text="First Name" />
+                                    <TableColumn fx:id="v_lname" editable="false" prefWidth="120.0" text="Last Name" />
+                                    <TableColumn fx:id="v_gen" editable="false" prefWidth="120.0" text="Gender" />
+                                    <TableColumn fx:id="v_age" editable="false" prefWidth="70.0" text="Age" />
+                                    <TableColumn fx:id="v_mobile" editable="false" prefWidth="120.0" text="Mobile No." />
+                                    <TableColumn fx:id="v_case_id" editable="false" prefWidth="120.0" text="Case ID" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Insert">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <JFXTextField fx:id="vtext_id" focusColor="#8f92ad" labelFloat="true" layoutX="53.0" layoutY="70.0" promptText="Victim ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="53.0" layoutY="140.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_lname" focusColor="#8f92ad" labelFloat="true" layoutX="353.0" layoutY="140.0" promptText="Last Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_gen" focusColor="#8f92ad" labelFloat="true" layoutX="53.0" layoutY="210.0" promptText="Gender" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_age" focusColor="#8f92ad" labelFloat="true" layoutX="353.0" layoutY="210.0" promptText="Age" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_mobile" focusColor="#8f92ad" labelFloat="true" layoutX="353.0" layoutY="280.0" promptText="Mobile No." style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vtext_caseid" focusColor="#8f92ad" labelFloat="true" layoutX="53.0" layoutY="280.0" promptText="Case ID" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="victim_submit" alignment="CENTER" buttonType="RAISED" layoutX="150.0" layoutY="400.0" onMouseClicked="#insert_victim" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Submit" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="victim_reset" alignment="CENTER" buttonType="RAISED" layoutX="350.0" layoutY="400.0" onAction="#victim_reset" prefHeight="48.0" prefWidth="114.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Reset" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Search">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="80.0" layoutY="40.0" prefHeight="17.0" prefWidth="82.0" text="Search By" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXTextField fx:id="vstext_fname" focusColor="#8f92ad" labelFloat="true" layoutX="138.0" layoutY="110.0" promptText="First Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXTextField fx:id="vstext_lname" focusColor="#8f92ad" labelFloat="true" layoutX="479.0" layoutY="110.0" promptText="Last Name" style="-fx-text-inner-color: #8f92ad#8f92ad #8f92ad#8f92ad;" unFocusColor="#ffe39f">
+                                 <font>
+                                    <Font name="Product Sans" size="16.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXButton fx:id="victim_search" alignment="CENTER" buttonType="RAISED" layoutX="380.0" layoutY="188.0" onMouseClicked="#search_victim" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c #4c517c#4c517c;" text="Search" textFill="WHITE">
+                                 <font>
+                                    <Font name="Product Sans" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                              <TableView fx:id="victim_table1" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="17.0" layoutY="243.0" prefHeight="382.0" prefWidth="954.0" style="-fx-background-color: #282b37#282b37;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
+                                 <columns>
+                                    <TableColumn fx:id="v_id1" editable="false" prefWidth="120.0" text="Victim ID" />
+                                    <TableColumn fx:id="v_fname1" editable="false" prefWidth="120.0" text="First Name" />
+                                    <TableColumn fx:id="v_lname1" editable="false" prefWidth="120.0" text="Last Name" />
+                                    <TableColumn fx:id="v_gen1" editable="false" prefWidth="120.0" text="Gender" />
+                                    <TableColumn fx:id="v_age1" editable="false" prefWidth="90.0" text="Age" />
+                                    <TableColumn fx:id="v_mobile1" editable="false" prefWidth="130.0" text="Mobile No." />
+                                    <TableColumn fx:id="v_case_id1" editable="false" prefWidth="120.0" text="Case ID" />
+                                 </columns>
+                                 <padding>
+                                    <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                                 </padding>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="562.0" style="-fx-background-color: #333645#333645 #333645#333645;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.main.LoginController">
+   <children>
+      <Label alignment="CENTER" layoutX="40.0" layoutY="30.0" prefHeight="45.0" prefWidth="562.0" style="-fx-background-color: #333645#333645;" text="Crime Record Analysis" textFill="#ffe39f" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Product Sans Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="username" focusColor="#8f92ad" labelFloat="true" layoutX="121.0" layoutY="95.0" prefHeight="32.0" prefWidth="331.0" promptText="Username" style="-fx-text-inner-color: #8f92ad;" unFocusColor="#ffe39f">
+         <font>
+            <Font name="Product Sans" size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="password" focusColor="#8f92ad" labelFloat="true" layoutX="121.0" layoutY="161.0" prefHeight="27.0" prefWidth="331.0" promptText="Password" style="-fx-text-inner-color: #8f92ad;" unFocusColor="#ffe39f">
+         <font>
+            <Font name="Product Sans" size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton fx:id="login" alignment="CENTER_RIGHT" buttonType="RAISED" defaultButton="true" layoutX="148.0" layoutY="252.0" onAction="#loginUser" prefHeight="39.0" prefWidth="91.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Login" textFill="#ffe39f">
+         <font>
+            <Font name="Product Sans" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="reset" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="308.0" layoutY="252.0" onAction="#reset" prefHeight="39.0" prefWidth="91.0" style="-fx-background-color: #4c517c#4c517c #4c517c#4c517c;" text="Reset" textFill="#ffe39f">
+         <font>
+            <Font name="Product Sans" size="16.0" />
+         </font>
+      </JFXButton>
+      <FontAwesomeIcon fill="#adaeb4" iconName="USER" layoutX="86.0" layoutY="122.0" size="2em" />
+      <FontAwesomeIcon fill="#adaeb4" iconName="KEY" layoutX="86.0" layoutY="190.0" size="2em" />
+      <FontAwesomeIcon fill="WHITE" iconName="SIGN_IN" layoutX="155.0" layoutY="280.0" size="2em" />
+      <FontAwesomeIcon fill="WHITE" iconName="ERASER" layoutX="315.0" layoutY="280.0" size="2em" />
+   </children>
+</AnchorPane>
